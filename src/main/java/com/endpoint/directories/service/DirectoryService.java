@@ -1,5 +1,6 @@
-package com.endpoint.directories;
+package com.endpoint.directories.service;
 
+import com.endpoint.directories.Directory;
 import com.endpoint.directories.exception.UnableToDeleteException;
 import com.endpoint.directories.exception.UnableToMoveException;
 

@@ -1,4 +1,4 @@
-package com.endpoint.directories;
+package com.endpoint.directories.service;
 
 import com.endpoint.directories.exception.FileReadException;
 
