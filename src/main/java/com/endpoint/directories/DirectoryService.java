@@ -6,7 +6,7 @@ import com.endpoint.directories.exception.UnableToMoveException;
 import java.util.*;
 
 public class DirectoryService {
-    private Directory root = new Directory("");
+    private final Directory root = new Directory("");
 
     public void add(String path) {
         String[] pathElements = path.split("/");
