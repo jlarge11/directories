@@ -1,12 +1,12 @@
-package com.endpoint.directory;
+package com.endpoint.directories;
 
-import com.endpoint.directory.exception.DirectoryOperationException;
+import com.endpoint.directories.exception.DirectoryOperationException;
 
 import java.util.List;
 
-import static com.endpoint.directory.CommandVerb.CREATE;
-import static com.endpoint.directory.CommandVerb.LIST;
-import static com.endpoint.directory.CommandVerb.MOVE;
+import static com.endpoint.directories.CommandVerb.CREATE;
+import static com.endpoint.directories.CommandVerb.LIST;
+import static com.endpoint.directories.CommandVerb.MOVE;
 
 public class Main {
     public static void main(String[] args) {
