@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group 'com.endpoint.directories'
@@ -16,4 +16,21 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+apply plugin : "java"
+ext {
+    javaMainClass = "com.endpoint.directories.Main"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+jar {
+    manifest {
+        attributes(
+                "Main-Class": javaMainClass
+        )
+    }
 }
