@@ -2,10 +2,7 @@ package com.endpoint.directories;
 
 import com.endpoint.directories.exception.FileReadException;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,21 +11,17 @@ public class InputReaderService {
         List<String> commands = new ArrayList<>();
         FileInputStream fis = null;
 
-        try {
-            ClassLoader classLoader = Main.class.getClassLoader();
-            File inputFile = new File(classLoader.getResource("input.txt").getFile());
-            fis = new FileInputStream(inputFile);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+        try (InputStream in = this.getClass().getResourceAsStream("/input.txt")) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-            String command;
-
-            while ((command = reader.readLine()) != null) {
-                commands.add(command);
-            }
+            reader.lines().forEach(line -> {
+                commands.add(line);
+            });
 
             return commands;
+
         } catch (Exception e) {
-            throw new FileReadException("Unable to read input file.", e);
+            throw new FileReadException("Unable to read the input command file.", e);
         }
     }
 }
