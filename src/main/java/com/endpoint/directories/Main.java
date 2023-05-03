@@ -1,10 +1,7 @@
 package com.endpoint.directories;
 
 import com.endpoint.directories.exception.DirectoryOperationException;
-import com.endpoint.directories.exception.FileReadException;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.endpoint.directories.CommandVerb.CREATE;
@@ -13,8 +10,9 @@ import static com.endpoint.directories.CommandVerb.MOVE;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> commands = getCommands();
         DirectoryService directoryService = new DirectoryService();
+        InputReaderService inputReaderService = new InputReaderService();
+        List<String> commands = inputReaderService.getCommands();
 
         for (String command : commands) {
             System.out.println(command);
@@ -42,28 +40,6 @@ public class Main {
         } else { // DELETE
             String path = parsedCommand[1];
             directoryService.delete(path);
-        }
-    }
-
-    private static List<String> getCommands() {
-        List<String> commands = new ArrayList<>();
-        FileInputStream fis = null;
-
-        try {
-            ClassLoader classLoader = Main.class.getClassLoader();
-            File inputFile = new File(classLoader.getResource("input.txt").getFile());
-            fis = new FileInputStream(inputFile);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-
-            String command;
-
-            while ((command = reader.readLine()) != null) {
-                commands.add(command);
-            }
-
-            return commands;
-        } catch (Exception e) {
-            throw new FileReadException("Unable to read input file.", e);
         }
     }
 }
