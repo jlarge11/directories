@@ -14,7 +14,7 @@ import static com.endpoint.directories.CommandVerb.MOVE;
 public class Main {
     public static void main(String[] args) {
         List<String> commands = getCommands();
-        Directory root = new Directory("");
+        DirectoryService directoryService = new DirectoryService();
 
         for (String command : commands) {
             System.out.println(command);
@@ -22,26 +22,26 @@ public class Main {
             CommandVerb commandVerb = CommandVerb.valueOf(parsedCommand[0]);
 
             try {
-                executeCommand(root, parsedCommand, commandVerb);
+                executeCommand(directoryService, parsedCommand, commandVerb);
             } catch (DirectoryOperationException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    private static void executeCommand(Directory root, String[] parsedCommand, CommandVerb commandVerb) {
+    private static void executeCommand(DirectoryService directoryService, String[] parsedCommand, CommandVerb commandVerb) {
         if (CREATE == commandVerb) {
             String path = parsedCommand[1];
-            root.add(path);
+            directoryService.add(path);
         } else if (LIST == commandVerb) {
-            System.out.println(root);
+            System.out.println(directoryService.list());
         } else if (MOVE == commandVerb) {
             String sourcePath = parsedCommand[1];
             String destinationPath = parsedCommand[2];
-            root.move(sourcePath, destinationPath);
+            directoryService.move(sourcePath, destinationPath);
         } else { // DELETE
             String path = parsedCommand[1];
-            root.delete(path);
+            directoryService.delete(path);
         }
     }
 
