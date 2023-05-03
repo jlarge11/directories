@@ -1,4 +1,4 @@
-package com.endpoint.directories;
+package com.endpoint.directories.model;
 
 import java.util.TreeMap;
 

@@ -1,14 +1,15 @@
 package com.endpoint.directories;
 
 import com.endpoint.directories.exception.DirectoryOperationException;
+import com.endpoint.directories.model.CommandVerb;
 import com.endpoint.directories.service.DirectoryService;
 import com.endpoint.directories.service.InputReaderService;
 
 import java.util.List;
 
-import static com.endpoint.directories.CommandVerb.CREATE;
-import static com.endpoint.directories.CommandVerb.LIST;
-import static com.endpoint.directories.CommandVerb.MOVE;
+import static com.endpoint.directories.model.CommandVerb.CREATE;
+import static com.endpoint.directories.model.CommandVerb.LIST;
+import static com.endpoint.directories.model.CommandVerb.MOVE;
 
 public class Main {
     public static void main(String[] args) {
