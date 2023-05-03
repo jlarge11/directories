@@ -18,19 +18,10 @@ test {
     useJUnitPlatform()
 }
 
-apply plugin : "java"
-ext {
-    javaMainClass = "com.endpoint.directories.Main"
-}
-
-application {
-    mainClassName = javaMainClass
-}
-
 jar {
     manifest {
         attributes(
-                "Main-Class": javaMainClass
+                "Main-Class": "com.endpoint.directories.Main"
         )
     }
 }
