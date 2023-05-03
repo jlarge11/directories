@@ -94,18 +94,24 @@ public class Directory {
 
     @Override
     public String toString() {
-        return print(this, 0);
+        return printChildren(this, 0);
     }
 
-    private String print(Directory directory, int indent) {
+    private String printChildren(Directory directory, int indent) {
+        TreeMap<String, Directory> children = directory.getChildren();
+
+        if (children.isEmpty()) {
+            return "";
+        }
+
         StringBuilder sb = new StringBuilder();
 
-        for (Directory child : directory.getChildren().values()) {
+        for (Directory child : children.values()) {
             sb
                 .append("  ".repeat(indent))
                 .append(child.name)
                 .append("\n")
-                .append(print(child, indent + 1));
+                .append(printChildren(child, indent + 1));
         }
 
         // Remove the trailing newline
