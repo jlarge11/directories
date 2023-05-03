@@ -1,4 +1,4 @@
-package com.endpoint.directory;
+package com.endpoint.directory.exception;
 
 public class UnableToMoveException extends DirectoryOperationException {
     public UnableToMoveException(String sourcePath, String destinationPath, String pathElement, String sourceOrDestination) {

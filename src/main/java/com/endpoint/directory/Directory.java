@@ -1,5 +1,8 @@
 package com.endpoint.directory;
 
+import com.endpoint.directory.exception.UnableToDeleteException;
+import com.endpoint.directory.exception.UnableToMoveException;
+
 import java.util.*;
 
 public class Directory {

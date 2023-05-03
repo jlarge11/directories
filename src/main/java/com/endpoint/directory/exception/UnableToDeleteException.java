@@ -1,4 +1,4 @@
-package com.endpoint.directory;
+package com.endpoint.directory.exception;
 
 public class UnableToDeleteException extends DirectoryOperationException {
     public UnableToDeleteException(String path, String pathElement) {
